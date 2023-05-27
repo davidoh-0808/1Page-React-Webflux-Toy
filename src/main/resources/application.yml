@@ -1,0 +1,11 @@
+
+
+spring:
+  datasource:
+    url:  jdbc:h2:mem:testdb
+#    url: jdbc:h2:file:/data/demo
+    driverClassName: org.h2.Driver
+    username: david
+    password: 1234
+  jpa:
+    database-platform:  org.hibernate.dialect.H2Dialect
