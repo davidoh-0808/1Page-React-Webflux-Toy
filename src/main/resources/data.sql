@@ -1,0 +1,6 @@
+INSERT INTO movie (id, genre, title) VALUES (1, 'action', 'John Wick')
+INSERT INTO movie (id, genre, title) VALUES (2, 'action', 'The Fast And Furious')
+INSERT INTO movie (id, genre, title) VALUES (3, 'sci-fi', 'Interstellar')
+INSERT INTO movie (id, genre, title) VALUES (4, 'animation', 'Your Name Is')
+INSERT INTO movie (id, genre, title) VALUES (5, 'drama', 'The Godfather')
+INSERT INTO movie (id, genre, title) VALUES (6, 'comedy', 'Central Intelligence')
