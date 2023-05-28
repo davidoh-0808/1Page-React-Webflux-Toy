@@ -6,10 +6,12 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class NettyAppServer {
 
-    // The Netty Server PORT must be different from Spring Boot (8080)
+    // The Netty Server PORT must be different from Spring Boot
     private static final int HTTP_PORT = 8888;
 
     public void run() throws Exception {
@@ -31,7 +33,7 @@ public class NettyAppServer {
 
                         The actual "controllers" are registered in this channel handler
                      */
-                    .childHandler( new NettyServerInitializer() )
+                    .childHandler(new NettyServerInitializer())
 
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);

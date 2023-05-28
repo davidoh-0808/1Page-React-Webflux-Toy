@@ -18,13 +18,20 @@ class MovieList extends Component {
         return "?";
     }
 
-    toMovie(m) {
+    toMovie(m) {    // TODO : Fetch  1. movies  2. genres via axios
 
+        var g = "?";
+        for (var i = 0; i < this.props.genres.length; i++) {
+            if (this.props.genres[i].value == m.genre) {
+                g = this.props.genres[i].label;
+                break;
+            }
+        }
 
         return(
-            <tbody>
+            <tbody key={m.id}>
                 <tr>
-                    <td></td><td></td>
+                    <td>{m.title}</td><td>{g}</td>
                 </tr>
             </tbody>
         )
@@ -32,14 +39,16 @@ class MovieList extends Component {
 
     render() {
         return(
-            <table>
+            <table className="movie-list">
                 <tbody>
                     <tr>
-                        <th></th>
-                        <th></th>
+                        <th>Title</th>
+                        <th>Genre</th>
                     </tr>
                 </tbody>
-                {}
+
+                {/* TODO : Fetch  1. movies  2. genres via axios */}
+                {this.props.movies.map(this.toMovie(m))}
             </table>
         )
     }

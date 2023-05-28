@@ -1,8 +1,12 @@
 package practice.reactspringbootnettytoy1;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import practice.reactspringbootnettytoy1.movie.netty.NettyAppServer;
+import practice.reactspringbootnettytoy1.movie.repository.MovieRepository;
+import practice.reactspringbootnettytoy1.movie.service.MovieService;
+import practice.reactspringbootnettytoy1.movie.service.MovieServiceImpl;
 
 /**
  * Configure Netty Server w/o Spring Boot

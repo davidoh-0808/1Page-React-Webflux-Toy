@@ -5,8 +5,11 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-
+@RequiredArgsConstructor
+@Slf4j
 public class NettyServerInitializer extends ChannelInitializer<Channel> {
 
     @Override
