@@ -1,5 +1,6 @@
 spring:
   datasource:
+    # access localhost h2 database via "http://localhost:8080/h2-console"
     url:  jdbc:h2:mem:testdb
 #    url: jdbc:h2:file:/data/demo
     driverClassName: org.h2.Driver
