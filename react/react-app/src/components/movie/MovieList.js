@@ -22,19 +22,22 @@ class MovieList extends Component {
         this.state = { movies: [] }
 
         this.toMovie = this.toMovie.bind(this);
-        this.sendRequest = this.sendRequest.bind(this);
+        this.sendFetchMovieRequest = this.sendFetchMovieRequest.bind(this);
         this.processRequest = this.processRequest.bind(this);
-        // this sendAddMovieRequest API will be called via MovieForm.js
-        this.props.eventDispatcher.subscribe("sendAddMovieRequest", this.sendAddMovieRequest);
+        // this sendFetchMovieRequest API will be called in the MovieForm.js component
+        this.props.eventDispatcher.subscribe("sendFetchMovieRequest", this.sendFetchMovieRequest);
     }
 
+
+
+    // fetch the movie via sendFetchMovieRequest API  and  update the React state
     componentDidMount() {
-        this.sendRequest()
+        this.sendFetchMovieRequest()
     }
 
-    sendAddMovieRequest() {
+    sendFetchMovieRequest() {
         xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost/movies")
+        xhr.open("GET", "http://localhost/movies");
         xhr.send();
         xhr.addEventListener("readystatechange", this.processRequest, false);
     }
@@ -43,19 +46,23 @@ class MovieList extends Component {
         if (xhr.readyState === 4 && xhr.status === 200) {
             console.log(xhr.responseText)
             var response = JSON.parse(xhr.responseText);
+
+            // set the React state with the fetched movie list
             this.setState({
                 movies: response
             })
         }
     }
 
+
+
     // update the React state from
     toMovie(movieJson) {
-        var g = "?";    // not sure what genre the inserted movie object
+        var genreMapped = "?";    // not sure what genre the inserted movie object
 
         for (var i = 0; i < this.props.genres.length; i++) {
             if (this.props.genres[i].value == movieJson.genre) {
-                g = this.props.genres[i].label;
+                genreMapped = this.props.genres[i].label;
                 break;
             }
         }
@@ -64,7 +71,7 @@ class MovieList extends Component {
             <tbody key={movieJson.id}>
                 <tr>
                     <td>{movieJson.title}</td>
-                    <td>{g}</td>
+                    <td>{genreMapped}</td>
                 </tr>
             </tbody>
         )

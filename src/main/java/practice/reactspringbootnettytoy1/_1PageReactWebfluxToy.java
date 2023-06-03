@@ -2,7 +2,6 @@ package practice.reactspringbootnettytoy1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import practice.reactspringbootnettytoy1.movie.netty.NettyAppServer;
 
 /**
  * Configure Netty Server w/ Spring Boot

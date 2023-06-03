@@ -4,7 +4,7 @@ import MovieList from "./components/movie/MovieList"
 import MovieForm from "./components/movie/MovieForm"
 
 
-// give genres as a fixed value
+// set genres as fixed values
 const genres = [
         {value: 'action', label: 'Action'},
         {value: 'comedy', label: 'Comedy'},
@@ -13,14 +13,17 @@ const genres = [
         {value: 'musical', label: 'Musical'}
     ]
 
-// ** use event dispatcher to handle state changes in MovieForm and MovieList components
+/*
+    ** use the global event dispatcher to share functions across components
+    * which means a function can be defined in one component (subscribe) and used in another (dispatch)
+ */
 const eventDispatcher = {
         listeners: {},
         dispatch: function(event, data) {
             if(this.listeners[event]) {
                 this.listeners[event].forEach(
-                    function(label) {
-                        label(data);
+                    function(listener) {
+                        listener(data);
                     }
                 );
             }

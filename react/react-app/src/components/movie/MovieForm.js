@@ -31,12 +31,12 @@ class MovieForm extends Component {
 
     }
 
-    /*
-    ** declare functions **
-*/
 
-    /* leverage React setState function to re-render UI when state changes
-        and Object.assign() function to return an object representing the current state */
+
+    // ** declare functions **
+    /* leverage
+        1) React setState function to re-render UI when state changes
+        2) Object.assign() function to return an object representing the current state */
     changeState(keyValObj) {
         this.setState(
             Object.assign({}, this.state, keyValObj)
@@ -59,15 +59,15 @@ class MovieForm extends Component {
             // make a new movie out of the React state altered via form
             JSON.stringify({ "title": this.state.title, "genre": this.state.genre })
         );
-        // *** processRequest function
-        xhr.addEventListener("readystatechange", this.processRequest, false);
+        // *** reset the React state after the JSON event is sent to createMovie API
+        xhr.addEventListener("resetReactState", this.processRequest, false);
     }
 
     // *** reset the React state after the createMovie API is processed
     processRequest() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // use the eventDispatcher to reset .. ??
-            this.props.eventDispatcher.dispatch("sendAddMovieRequest", "")
+            this.props.eventDispatcher.dispatch("sendFetchMovieRequest", "")
             this.changeState( { title: "" } )
         }
     }
@@ -78,25 +78,27 @@ class MovieForm extends Component {
         )
     }
 
+
+    // render html for the component
     render() {
         return (
             <form className="movie-form">
-            <span className="movie-form-element">
-                <label>Title&nbsp;
-                    {/* use the React state as the value  AND  a function to change that state */}
-                    <input type="text" value={this.state.title} onChange={this.handleChangeTitle} />
-                </label>
-            </span>
                 <span className="movie-form-element">
-                <label>Genre&nbsp;
-                    <select value={this.state.genre} onChange={this.handleChangeGenre}>
-                {this.props.genres.map(this.toGenreOption)}
-                </select>
-                </label>
-            </span>
-                <span className="movie-form-element">
-                <input type="button" value="Submit" onClick={this.createMovie} />
-            </span>
+                    <label>Title&nbsp;
+                        {/* use the React state as the value  AND  a function to change that state */}
+                        <input type="text" value={this.state.title} onChange={this.handleChangeTitle} />
+                    </label>
+                </span>
+                    <span className="movie-form-element">
+                    <label>Genre&nbsp;
+                        <select value={this.state.genre} onChange={this.handleChangeGenre}>
+                    {       this.props.genres.map(this.toGenreOption)}
+                        </select>
+                    </label>
+                </span>
+                    <span className="movie-form-element">
+                    <input type="button" value="Submit" onClick={this.createMovie} />
+                </span>
             </form>
         )
     }

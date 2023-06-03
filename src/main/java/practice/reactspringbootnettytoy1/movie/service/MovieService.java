@@ -1,13 +1,15 @@
 package practice.reactspringbootnettytoy1.movie.service;
 
 import practice.reactspringbootnettytoy1.movie.entity.Movie;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 public interface MovieService {
 
-    List<Movie> getAllMovies();
+    Flux<Movie> getAllMovies();
 
-    Movie saveMovie(Movie movie);
+    Mono<Movie> saveMovie(Mono<Movie> movie);
 
 }
