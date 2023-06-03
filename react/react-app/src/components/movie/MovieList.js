@@ -37,7 +37,7 @@ class MovieList extends Component {
 
     sendFetchMovieRequest() {
         xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost/movies");
+        xhr.open("GET", "http://localhost:8080/movies");
         xhr.send();
         xhr.addEventListener("readystatechange", this.processRequest, false);
     }

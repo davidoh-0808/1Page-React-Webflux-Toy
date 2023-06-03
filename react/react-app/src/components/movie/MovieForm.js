@@ -54,7 +54,7 @@ class MovieForm extends Component {
 
     createMovie() {
         xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost/movies")
+        xhr.open("POST", "http://localhost:8080/movies")
         xhr.send(
             // make a new movie out of the React state altered via form
             JSON.stringify({ "title": this.state.title, "genre": this.state.genre })
