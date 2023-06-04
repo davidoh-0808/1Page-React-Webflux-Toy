@@ -38,6 +38,10 @@ class MovieList extends Component {
     sendFetchMovieRequest() {
         xhr = new XMLHttpRequest();
         xhr.open("GET", "http://localhost:8080/movies");
+        /*
+        xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000') // Replace with your React app's domain
+        xhr.setRequestHeader("Content-Type", "application/json")
+        */
         xhr.send();
         xhr.addEventListener("readystatechange", this.processRequest, false);
     }

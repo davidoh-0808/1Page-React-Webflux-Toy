@@ -29,11 +29,13 @@ public class MovieClient {
     private WebClient client = WebClient.create("http://localhost:8080");
 
     public Flux<Movie> getMovies() {
+
+        // << invokes RestController endpoint GET http://localhost:8080/movies
         return client.get()
-                // << invokes RestController endpoint /movies
                 .uri("/movies")
                 // << map the Rest API result into FLUX to be consumed in the web client
-                .exchange().flatMapMany(clientResponse -> clientResponse.bodyToFlux(Movie.class))
+                .exchange().flatMapMany(
+                        clientResponse -> clientResponse.bodyToFlux(Movie.class) )
                 .log("Movies Fetched : ");
     }
 

@@ -21,6 +21,7 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @RequiredArgsConstructor
+//@CrossOrigin(origins = "*", allowedHeaders = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE })
 @RestController
 @RequestMapping("/movies")
 public class MovieController {
